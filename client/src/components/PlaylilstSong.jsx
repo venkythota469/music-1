@@ -10,7 +10,7 @@ import { FetchContext } from "../Context/FetchContext";
 
 
 const PlaylilstSong = ({ title, artistName, songSrc ,playlistId }) => {
-  const { song, audio, __URL__ } = useContext(SongContext);
+  const { song, audio,  URll } = useContext(SongContext);
   const {setFetchPlaylist} = useContext(FetchContext)
   const navigate = useNavigate();
   const token = localStorage.getItem("access_token");
@@ -19,7 +19,7 @@ const PlaylilstSong = ({ title, artistName, songSrc ,playlistId }) => {
   // Play the song when the user clicks on the song card
   const handlePlay = () => {
     audio.pause();
-    audio.src = `${__URL__}/api/v1/stream/${songSrc}`;
+    audio.src = `${ URll}/api/v1/stream/${songSrc}`;
     song.songName = title;
     song.songArtist = artistName;
     song.songUrl = songSrc;
@@ -36,7 +36,7 @@ const PlaylilstSong = ({ title, artistName, songSrc ,playlistId }) => {
 
   const removeSong = async () => {
     const { data,status } = await axios.delete(
-      `https://music-player-app-backend-yq0c.onrender.com/api/v1/playlist/remove/${playlistId}?song=${title}`,
+      `${ URll}/api/v1/playlist/remove/${playlistId}?song=${title}`,
       {
         headers,
       }
