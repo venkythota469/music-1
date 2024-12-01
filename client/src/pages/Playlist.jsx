@@ -12,7 +12,7 @@ const Playlist = () => {
   const [playList, setPlayList] = useState(null); // state for the playlist
   const [loading, setLoading] = useState(false);
   const {fetchPlaylist} = useContext(FetchContext)
-  const {__URL__} = useContext(SongContext)
+  const { URll} = useContext(SongContext)
   
   // headers for the api calls
   const headers = {
@@ -24,7 +24,7 @@ const Playlist = () => {
   const deletePlaylist = async () => {
     setLoading(true);
     const { data, status } = await axios.delete(
-      `https://music-1-4j25.onrender.com/api/v1/playlist/delete/${id}`,
+      `${ URll}/api/v1/playlist/delete/${id}`,
       { headers }
     );
     if (status === 200) {
@@ -44,7 +44,7 @@ const Playlist = () => {
   // get playlist
   const getPlaylist = async () => {
     const { data } = await axios.get(
-      `${__URL__}/api/v1/playlist/${id}`,
+      `${ URll}/api/v1/playlist/${id}`,
       { headers }
     );
     setPlayList(data["playlist"]);
