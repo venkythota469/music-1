@@ -10,7 +10,7 @@ const Songs = () => {
   const { showMenu, setShowMenu } = useContext(SidebarContext);
   const {fetchSong} = useContext(FetchContext)
   const {queue,list} = useContext(QueueContext)
-  const {__URL__} = useContext(SongContext)
+  const { URll} = useContext(SongContext)
   
   const [loading, setLoading] = useState(false);
   const [songs, setSongs] = useState(null);
@@ -18,7 +18,7 @@ const Songs = () => {
   useEffect(() => {
     if (showMenu) setShowMenu(false);
     const fetchSongs = async () => {
-      const { data } = await axios.get(`${__URL__}/api/v1/songs`);
+      const { data } = await axios.get(`${ URll}/api/v1/songs`);
       setSongs(data["songs"]);
     };
     setLoading(true);
