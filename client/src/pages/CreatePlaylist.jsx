@@ -14,7 +14,7 @@ import { GrFormAdd } from "react-icons/gr";
 const CreatePlaylist = () => {
   const {fetchPlaylist} = useContext(FetchContext)
   const { showMenu, setShowMenu } = useContext(SidebarContext);
-  const {__URL__} = useContext(SongContext)
+  const { URll}= useContext(SongContext)
   const {list} = useContext(QueueContext)
   console.log(list)
   const [cretePlaylist, setCreatePlaylist] = React.useState(false);
@@ -43,7 +43,7 @@ const CreatePlaylist = () => {
     const playlistName = document.getElementById("playlistName").value;
     if (playlistName === "") return alert("Please enter a playlist name");
     const {data,status} = await axios.post(
-      `${__URL__}/api/v1/playlist/create`,
+      `${ URll}/api/v1/playlist/create`,
       { playlistName },
       { headers }
     );
@@ -59,7 +59,7 @@ const CreatePlaylist = () => {
 
   // fetching playlists
   const fetchPlaylists = async () => {
-    const { data } = await axios.get(`${__URL__}/api/v1/playlist`, {
+    const { data } = await axios.get(`${ URll}/api/v1/playlist`, {
       headers,
     });
     setPlaylists(data["playlists"]);
