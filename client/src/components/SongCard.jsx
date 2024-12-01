@@ -21,7 +21,7 @@ import musicbg from "../assets/musicbg.jpg";
 const SongCard = ({ title, artistName, songSrc, userId, songId, file }) => {
 
   // Using context
-  const { song, audio, __URL__ } = useContext(SongContext);
+  const { song, audio, URll } = useContext(SongContext);
   const { setFetchSong} = useContext(FetchContext);
   const {dispatchQueue,dispatchList} = useContext(QueueContext)
   const navigate = useNavigate(); // Used to navigate to the playlist page
@@ -41,8 +41,8 @@ const SongCard = ({ title, artistName, songSrc, userId, songId, file }) => {
   const handlePlay = () => {
     song.setSongName(title);
     song.setArtistName(artistName);
-    song.setSongUrl(`${__URL__}/api/v1/stream/${songSrc}`);
-    audio.src = `${__URL__}/api/v1/stream/${songSrc}`;
+    song.setSongUrl(`${ URll}/api/v1/stream/${songSrc}`);
+    audio.src = `${ URll}/api/v1/stream/${songSrc}`;
     audio.load();
     audio.play();
     song.setIsPlaying(true)
@@ -54,7 +54,7 @@ const SongCard = ({ title, artistName, songSrc, userId, songId, file }) => {
   // Delete the song
   const deleteSong = async () => {
     const { data,status } = await axios.delete(
-      `${__URL__}/api/v1/song/delete/${songId}?file=${file}`,
+      `${ URll}/api/v1/song/delete/${songId}?file=${file}`,
       {
         headers,
       }
