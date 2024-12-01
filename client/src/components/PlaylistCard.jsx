@@ -10,7 +10,7 @@ import { QueueContext } from "../Context/QueueContex";
 
 const PlaylistCard = ({playlistName,playlistId,noSongs}) => {
     const {setFetchPlaylist} = useContext(FetchContext)
-    const {song,songList,setSongList,__URL__} = useContext(SongContext)
+    const {song,songList,setSongList,URll} = useContext(SongContext)
     const {list,dispatchList} = useContext(QueueContext)
 
     const [loading,setLoading] = useState(false)
@@ -24,7 +24,7 @@ const PlaylistCard = ({playlistName,playlistId,noSongs}) => {
             "Content-Type": "application/json",
             "X-Auth-Token": localStorage.getItem("access_token"),
             };
-        const {data,status} = await axios.post(`${__URL__}/api/v1/playlist/add/${playlistId}`,list,{headers})
+        const {data,status} = await axios.post(`${URll}/api/v1/playlist/add/${playlistId}`,list,{headers})
         if(status === 200){
             alert("Song added to playlist")
             setFetchPlaylist(prev => !prev)
