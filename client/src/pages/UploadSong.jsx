@@ -8,7 +8,7 @@ const UploadSong = () => {
   const navigate = useNavigate();
   // we are using this to close the sidebar when we land on this page
   const { showMenu, setShowMenu } = useContext(SidebarContext);
-  const {__URL__} = useContext(SongContext)
+  const { URll}= useContext(SongContext)
   useEffect(() => {
     if (showMenu) setShowMenu(false);
   }, []);
@@ -42,7 +42,7 @@ const UploadSong = () => {
       },
     };
     const result = await axios.post(
-      `${__URL__}/api/v1/song/upload`,
+      `${ URll}/api/v1/song/upload`,
       formData,
       config
     );
