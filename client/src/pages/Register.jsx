@@ -12,16 +12,16 @@ const Register = () => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  let __URL__ ;
+  let URll ;
   if ( document.domain === "localhost" ) {
-    __URL__ = "http://localhost:1337";
+     URll = "http://localhost:1337";
   } else {
-    __URL__ = "https://music-1-4j25.onrender.com";
+    URll = "https://music-1-4j25.onrender.com";
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(`${__URL__}/api/v1/auth/register`, {
+    const res = await fetch(`${ URll}/api/v1/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
