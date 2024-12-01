@@ -7,7 +7,7 @@ export const SongContextState = ({ children }) => {
   if(document.domain === "localhost"){
     __URL__ = "http://localhost:1337"
   }else{
-    __URL__ = "https://music-1-4j25.onrender.com"
+    URll = "https://music-1-4j25.onrender.com"
   }
   const audio = new Audio();
   const song = {
@@ -33,5 +33,5 @@ export const SongContextState = ({ children }) => {
     
   };
 
-  return <SongContext.Provider value={{audio,song,__URL__}}>{children}</SongContext.Provider>;
+  return <SongContext.Provider value={{audio,song, URll}}>{children}</SongContext.Provider>;
 };
